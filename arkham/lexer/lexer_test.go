@@ -1,7 +1,7 @@
 package lexer
 
 import (
-	"pa-oshea/arkham/token"
+	"arkham/token"
 	"testing"
 )
 

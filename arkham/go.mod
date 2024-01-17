@@ -1,3 +1,3 @@
-module pa-oshea/arkham
+module arkham
 
 go 1.21.6

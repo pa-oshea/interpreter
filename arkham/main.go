@@ -1,10 +1,10 @@
 package main
 
 import (
+	"arkham/repl"
 	"fmt"
 	"os"
 	"os/user"
-	"pa-oshea/arkham/repl"
 )
 
 // TODO: token add line number and column number for better errors
