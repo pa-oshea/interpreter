@@ -1,6 +1,6 @@
 package lexer
 
-import "pa-oshea/gomonk/token"
+import "pa-oshea/arkham/token"
 
 type Lexer struct {
 	input        string
