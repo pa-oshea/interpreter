@@ -1,9 +1,13 @@
 package ast
 
-import "arkham/token"
+import (
+	"arkham/token"
+	"bytes"
+)
 
 type Node interface {
 	TokenLiteral() string
+	String() string
 }
 
 type Statement interface {
@@ -28,6 +32,16 @@ func (p *Program) TokenLiteral() string {
 	return ""
 }
 
+func (p *Program) String() string {
+	var out bytes.Buffer
+
+	for _, s := range p.Statements {
+		out.WriteString(s.String())
+	}
+
+	return out.String()
+}
+
 type Indentifier struct {
 	Token token.Token
 	Value string
@@ -36,19 +50,4 @@ type Indentifier struct {
 func (i *Indentifier) expressionNode()      {}
 func (i *Indentifier) TokenLiteral() string { return i.Token.Literal }
 
-type LetStatement struct {
-	Value Expression
-	Name  *Indentifier
-	Token token.Token
-}
-
-func (ls *LetStatement) statementNode()       {}
-func (ls *LetStatement) TokenLiteral() string { return ls.Token.Literal }
-
-type ReturnStatement struct {
-	ReturnValue Expression
-	Token       token.Token
-}
-
-func (rs *ReturnStatement) statementNode()       {}
-func (rs *ReturnStatement) TokenLiteral() string { return rs.Token.Literal }
+func (i *Indentifier) String() string { return i.Value }
