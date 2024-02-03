@@ -42,15 +42,14 @@ func (p *Program) String() string {
 	return out.String()
 }
 
-type Indentifier struct {
+type Identifier struct {
 	Token token.Token
 	Value string
 }
 
-func (i *Indentifier) expressionNode()      {}
-func (i *Indentifier) TokenLiteral() string { return i.Token.Literal }
-
-func (i *Indentifier) String() string { return i.Value }
+func (i *Identifier) expressionNode()      {}
+func (i *Identifier) TokenLiteral() string { return i.Token.Literal }
+func (i *Identifier) String() string { return i.Value }
 
 type ExpressionStatement struct {
 	Expression Expression
