@@ -3,6 +3,8 @@ package lexer
 import (
 	"arkham/token"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestNextToken(t *testing.T) {
@@ -112,12 +114,7 @@ func TestNextToken(t *testing.T) {
 	for i, tt := range tests {
 		tok := l.NextToken()
 
-		if tok.Type != tt.expectedType {
-			t.Fatalf("tests[%d] - tokenType wrong. expected=%q, got=%q", i, tt.expectedType, tok.Type)
-		}
-
-		if tok.Literal != tt.expectedLiteral {
-			t.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q", i, tt.expectedLiteral, tok.Literal)
-		}
+		require.Equalf(t, tt.expectedType, tok.Type, "tests[%d]", i)
+		require.Equalf(t, tok.Literal, tt.expectedLiteral, "tests[%d]", i)
 	}
 }
